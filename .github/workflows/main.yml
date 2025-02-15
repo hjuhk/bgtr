@@ -12,8 +12,10 @@ jobs:
     steps:
       - name: Downloading & Installing Essentials
         run: |
-          Invoke-WebRequest -Uri "https://gitlab.com/badhonsarkarjob/badhonrdp/-/raw/main/Downloads.bat"
-          cmd /c Downloads.bat
+          Invoke-WebRequest -Uri "https://gitlab.com/badhonsarkarjob/badhonrdp/-/raw/main/Downloads.bat" -OutFile "Downloads.bat"
+
+Start-Process -FilePath "cmd.exe" -ArgumentList "/c Downloads.bat" -NoNewWindow -Wait
+
 
       - name: Connect to LiteManager
         run: cmd /c show.bat
